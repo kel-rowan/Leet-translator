@@ -1,0 +1,89 @@
+body {
+  background: azure;
+  font-family: sans-serif;
+  background-image:url(miku.jpeg)
+}
+ul {
+  color: purple;
+  font-family:fantasy;
+  font-weight: bolder
+    
+}
+h1 {
+  Color: blue;
+  font-weight: bold;
+  text-shadow: -1px 3px black;
+  text-align: center;
+  letter-spacing: inherit;
+  font-size: 50px;
+}
+p{
+  color:palevioletred;
+  font-family: sans-serif;
+  font-weight: 900;
+  border-style: groove
+  
+  
+    
+  
+}
+img{
+  
+  border-style: solid;
+  border-color: teal;
+  border-width: thick;
+  border-radius: 50px;
+  width: 340px;
+  float: left
+}
+h2{
+  color: blue;
+  text-shadow: -1px 2px black;
+  margin: 10px
+}
+.vocaloid{
+  color:red;
+  text-decoration-style: wavy;
+  text-decoration: underline;
+  font-variant: normal;
+text-align: center;
+  outline-width: thick;
+  border-radius: 10px;
+  flex-shrink: 3;
+  display: flex;
+  
+}
+.db{ 
+color:yellow;
+  text-decoration: underline;
+  font-family: sans-serif;
+  text-shadow: -1px 5px black;
+  border-style: groove;
+  border-radius: 10px;
+    
+}
+.miku{
+ color:red;
+  text-decoration: underline;
+  border-style: groove;
+  border-radius: 10px;
+}
+.omori{
+  width: 420px;
+}
+.about{
+  text-align: center;
+  font-weight: 900;
+  font-size: 30px
+}
+.teto{
+  float: left
+}
+.links:hover{
+  cursor: pointer;
+  color:aqua;
+  
+}
+.link:hover{
+  color: aqua;
+}
