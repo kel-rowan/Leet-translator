@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Text ↔ Leet Converter</title>
+ 
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+ 
+    body {
+      margin: 0;
+      min-height: 100vh;
+    display: grid;
+
+      place-items: center;
+      padding: 24px;
+      font-family: Arial, sans-serif;
+      background: #f3f4f6;
+      color: #1f2937;
+    }
+ 
+    .converter {
+      width: min(100%, 600px);
+      padding: 28px;
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    }
+ 
+    h1 {
+      margin-top: 0;
+      text-align: center;
+    }
+ 
+    label {
+      display: block;
+      margin: 18px 0 8px;
+      font-weight: bold;
+    }
+ 
+    textarea {
+      width: 100%;
+      min-height: 140px;
+      padding: 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      font: inherit;
+      resize: vertical;
+    }
+ 
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 16px 0;
+    }
+ 
+    button {
+      flex: 1;
+      min-width: 150px;
+      padding: 12px 16px;
+      border: 0;
+      border-radius: 8px;
+      background: #2563eb;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+ 
+    button:hover {
+      background: #1d4ed8;
+    }
+ 
+    button.secondary {
+      background: #475569;
+    }
+ 
+    button.secondary:hover {
+      background: #334155;
+    }
+ 
+    #status {
+      min-height: 1.2em;
+      color: #15803d;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <main class="converter">
+    <h1>Text ↔ Leet Converter</h1>
+ 
+    <label for="inputText">Input</label>
+    <textarea id="inputText" placeholder="Enter text or leet here..."></textarea>
+ 
+    <div class="buttons">
+      <button id="toLeetButton">Text to Leet</button>
+      <button id="toTextButton" class="secondary">Leet to Text</button>
+    </div>
+ 
+    <label for="outputText">Output</label>
+    <textarea id="outputText" readonly placeholder="Your converted text will appear here..."></textarea>
+ 
+    <p id="status" aria-live="polite"></p>
+  </main>
+ 
+  <script>
+    const alphabet = "abcdefghijklmnopqrstuvwxyz";
+    const leetMap = "@8(73?&#1~*/[]09£25/<^ŵ%¥i";
+    const leetToLetter = {
+      "@": "a",
+      "8": "b",
+      "(": "c",
+      "7": "d",
+      "3": "e",
+      "?": "f",
+      "&": "g",
+      "#": "h",
+      "1": "i",
+      "~": "j",
+      "*": "k",
+      "\\": "l",
+      "[": "m",
+      "]": "n",
+      "0": "o",
+      "9": "p",
+      "£": "q",
+      "2": "r",
+      "5": "s",
+      "/": "t",
+      "<": "u",
+      "^": "v",
+      "ŵ": "w",
+      "%": "x",
+      "¥": "y",
+      "i": "z"
+    };
+ 
+    function textToLeet(text) {
+      return Array.from(text.toLowerCase(), character => {
+        const index = alphabet.indexOf(character);
+        return index === -1 ? character : leetMap[index];
+      }).join("");
+    }
+ 
+    function leetToText(text) {
+      return Array.from(text.toLowerCase(), character =>
+        leetToLetter[character] ?? character
+      ).join("");
+    }
+ 
+    const input = document.getElementById("inputText");
+    const output = document.getElementById("outputText");
+    const status = document.getElementById("status");
+ 
+    document.getElementById("toLeetButton").addEventListener("click", () => {
+      output.value = textToLeet(input.value);
+      status.textContent = "Converted to leet.";
+    });
+ 
+    document.getElementById("toTextButton").addEventListener("click", () => {
+      output.value = leetToText(input.value);
+      status.textContent = "Converted to text.";
+    });
+  </script>
+</body>
+</html>
